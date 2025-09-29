@@ -1,12 +1,11 @@
 // src/components/Sidebar.jsx
 import React from 'react';
-// Anda perlu memindahkan CSS khusus sidebar ke file CSS terpisah
-// import './Sidebar.css'; 
+import { Link } from 'react-router-dom'; // 👈 1. Impor komponen Link
+import './Sidebar.css'; // 👈 2. Impor file CSS untuk sidebar
 
 function Sidebar() {
-  // Di sini kita akan menambahkan fungsi logout nanti
   const handleLogout = () => {
-    // Logika logout supabase
+    // Nanti kita akan isi dengan logika logout Supabase
     console.log("Logout clicked");
   };
 
@@ -26,10 +25,11 @@ function Sidebar() {
         <div className="menu">
           <ul className="menu-links">
             <li className="nav-link">
-              <a href="/overview-dashboard"> {/* Ganti ke path */}
+              {/* 👇 3. Ganti <a> dengan <Link> */}
+              <Link to="/overview-dashboard">
                 <i className='bx bxs-grid-alt icon'></i>
                 <span className="text nav-text">Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-link dropdown">
               <div className="dropdown-toggle">
@@ -38,33 +38,34 @@ function Sidebar() {
                 <i className='bx bxs-chevron-down arrow'></i>
               </div>
               <ul className="submenu">
-                <li><a href="/dashboard-cat">Dashboard</a></li>
-                <li><a href="/master-cat">Master Cat</a></li>
-                <li><a href="/tambah-data">Add Cat</a></li>
-                <li><a href="/cat-by-name-dashboard">Laporan Cat</a></li>
-                <li><a href="/laporan-cat-detail">Laporan Harian</a></li>
+                <li><Link to="/dashboard-cat">Dashboard</Link></li>
+                <li><Link to="/master-cat">Master Cat</Link></li>
+                <li><Link to="/tambah-data">Add Cat</Link></li>
+                <li><Link to="/cat-by-name-dashboard">Laporan Cat</Link></li>
+                <li><Link to="/laporan-cat-detail">Laporan Harian</Link></li>
               </ul>
             </li>
-            <li class="nav-link dropdown">
-                <div class="dropdown-toggle">
-                <i class='bx bxs-color-fill icon'></i>
-                    <span class="text nav-text">THINNER</span>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                    </div>
-                    <ul class="submenu">
-                    <li><a href="/dashboard-thinner">Dashboard</a></li>
-                    <li><a href="/master-thinner">Master Thinner</a></li>
-                    <li><a href="/tambah-thinner">Add Thinner</a></li>
-                    <li><a href="/thinner-by-name-dashboard">Laporan Thinner</a></li>
-                    <li><a href="/laporan-thinner-detail">Laporan Harian</a></li>
-                    </ul>
-                </li>
+            {/* 👇 4. Perbaiki class menjadi className */}
+            <li className="nav-link dropdown">
+              <div className="dropdown-toggle">
+                <i className='bx bxs-color-fill icon'></i>
+                <span className="text nav-text">THINNER</span>
+                <i className='bx bxs-chevron-down arrow'></i>
+              </div>
+              <ul className="submenu">
+                <li><Link to="/dashboard-thinner">Dashboard</Link></li>
+                <li><Link to="/master-thinner">Master Thinner</Link></li>
+                <li><Link to="/tambah-thinner">Add Thinner</Link></li>
+                <li><Link to="/thinner-by-name-dashboard">Laporan Thinner</Link></li>
+                <li><Link to="/laporan-thinner-detail">Laporan Harian</Link></li>
+              </ul>
+            </li>
           </ul>
         </div>
 
         <div className="bottom-content">
           <li className="logout">
-            <a href="#" onClick={handleLogout}> {/* Ganti ke fungsi logout */}
+            <a href="#" onClick={handleLogout}>
               <i className='bx bx-log-out icon'></i>
               <span className="text nav-text">Logout</span>
             </a>
